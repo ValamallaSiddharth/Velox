@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { useChatbot } from '../context/ChatbotContext';
-import logo from '../assets/logo.png';
+import { useChatbot } from '../chatbot/ChatbotContext';
+import logo from '../assets/logos/logo.png';
 
 export default function Navbar() {
   const { user, logout } = useAuth();

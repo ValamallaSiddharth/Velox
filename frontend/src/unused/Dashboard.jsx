@@ -2,8 +2,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '../context/AuthContext';
 import API from '../api/axios';
 import Navbar from '../components/Navbar';
-import ItemCard from '../components/ItemCard';
-import AddItemModal from '../components/AddItemModal';
+import ItemCard from './ItemCard';
+import AddItemModal from './AddItemModal';
 
 export default function Dashboard() {
   const { user } = useAuth();
