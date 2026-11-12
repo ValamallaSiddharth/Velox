@@ -1,4 +1,4 @@
-﻿import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useChatbot } from './ChatbotContext';
 import { generateResponse, extractContextHints } from './chatResponder';
 import ChatWindow from './ChatWindow';

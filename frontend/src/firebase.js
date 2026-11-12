@@ -3,23 +3,27 @@ import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/
 import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
-  apiKey:            "AIzaSyB2A6v3vOHV5atwzxmcKlvuij8CGaQrt_I",
-  authDomain:        "velox-249aa.firebaseapp.com",
-  projectId:         "velox-249aa",
-  storageBucket:     "velox-249aa.firebasestorage.app",
-  messagingSenderId: "968125678993",
-  appId:             "1:968125678993:web:947e82db85bb0134a20630",
-  measurementId:     "G-4XVNLG62ZE",
+  apiKey:            import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain:        import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId:         import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket:     import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId:             import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId:     import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
-const app       = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+const app = initializeApp(firebaseConfig);
+const analytics = typeof window !== 'undefined' && firebaseConfig.measurementId ? getAnalytics(app) : null;
 
 export const auth     = getAuth(app);
 export const provider = new GoogleAuthProvider();
 provider.setCustomParameters({ prompt: "select_account" });
 
-export const FIREBASE_CONFIGURED = true;
+export const FIREBASE_CONFIGURED = Boolean(
+  firebaseConfig.apiKey &&
+  firebaseConfig.apiKey !== 'your_firebase_api_key_here' &&
+  firebaseConfig.projectId
+);
 
 export { signInWithPopup, signOut };
 export default app;
